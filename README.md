@@ -3,11 +3,11 @@
 An interactive **FastAPI + Machine Learning + Modern Frontend** project that predicts **loan approval risk** using an AI model.  
 The system takes user financial and personal details, performs feature engineering, and predicts whether the applicant is **High Risk** or **Low Risk**.  
 
-![Personal Information](output_screenshot/output1.png)
-![Employment Details](output_screenshot/output2.png)
-![Financial Information](output_screenshot/output3.png)
-![Loan Details](output_screenshot/output4.png)
-![Prediction](output_screenshot/output5.png)
+![Personal Information](output_screenshots/output1.png)
+![Employment Details](output_screenshots/output2.png)
+![Financial Information](output_screenshots/output3.png)
+![Loan Details](output_screenshots/output4.png)
+![Prediction](output_screenshots/output5.png)
 
 
 ---
@@ -69,7 +69,7 @@ loan-risk-system/
 ## ⚙️ Setup & Installation  
 
 ### 1️⃣ Clone the repo  
-git clone https://github.com/your-username/loan-risk-system.git
+git clone https://github.com/S-Karthikeyan-17/loan-risk-system.git
 cd loan-risk-system
 
 2️⃣ Create & activate virtual environment
@@ -149,6 +149,7 @@ Age buckets & DTI ratio buckets
 Employment years & high interest flag
 
 🛠️ Future Enhancements
+
 ✅ Deploy to cloud (AWS/GCP/Render)
 
 ✅ Add database support (PostgreSQL / MySQL)
