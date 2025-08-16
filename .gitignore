@@ -34,7 +34,7 @@ dist/
 
 # Metrics / temporary data
 *.json
-!artifacts/metrics.json   # keep metrics.json if you want
+#!artifacts/metrics.json   # keep metrics.json if you want
 
 # DO NOT ignore output_screenshot (so it gets pushed)
 # output_screenshot/*.jpeg   ❌ removed this line
