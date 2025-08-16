@@ -177,3 +177,4 @@ def model_info():
             logger.error(f"Failed to load metrics: {str(e)}")
             return {"status": "error", "message": f"Failed to load metrics: {str(e)}"}
     return {"status": "error", "message": "metrics.json not found. Train the model first."}
+#python -m uvicorn app:app --reload --port 8000 
