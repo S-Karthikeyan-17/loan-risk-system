@@ -1,0 +1,46 @@
+# Virtual environment
+venv/
+.env
+*.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# MacOS / Windows
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Model artifacts
+*.pkl
+*.joblib
+
+# Metrics / temporary data
+*.json
+!artifacts/metrics.json   # keep metrics.json if you want
+
+# Output screenshots
+output_screenshot/*.jpeg
+
+# Node / frontend dependencies (if using npm)
+node_modules/
+
+# FastAPI / Uvicorn specific
+*.sqlite3

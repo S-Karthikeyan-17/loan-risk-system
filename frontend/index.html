@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Loan Risk Scoring</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>💡 AI-Powered Loan Eligibility & Risk Scoring</h1>
+      <p>Fill in your details step-by-step to get an instant AI-driven loan risk assessment.</p>
+    </header>
+
+    <form id="loanForm" class="form">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+        <div class="progress-step active">
+          <span class="step-number">1</span>
+          <span class="step-label">Personal</span>
+        </div>
+        <div class="progress-step">
+          <span class="step-number">2</span>
+          <span class="step-label">Employment</span>
+        </div>
+        <div class="progress-step">
+          <span class="step-number">3</span>
+          <span class="step-label">Financial</span>
+        </div>
+        <div class="progress-step">
+          <span class="step-number">4</span>
+          <span class="step-label">Loan</span>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step active">
+          <h3>Personal Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" name="Age" min="18" required>
+            </div>
+            <div class="form-group">
+              <label>Education</label>
+              <select name="Education" required>
+                <option value="">Select Education</option>
+                <option value="High School">High School</option>
+                <option value="Bachelor's">Bachelor's</option>
+                <option value="Master's">Master's</option>
+                <option value="PhD">PhD</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Marital Status</label>
+              <select name="MaritalStatus" required>
+                <option value="">Select Status</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Has Dependents?</label>
+              <select name="HasDependents" required>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>Employment Details</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Employment Type</label>
+              <select name="EmploymentType" required>
+                <option value="">Select Type</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Self-employed">Self-employed</option>
+                <option value="Unemployed">Unemployed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Months Employed</label>
+              <input type="number" name="MonthsEmployed" min="0" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>Financial Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Income ($)</label>
+              <input type="number" name="Income" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Credit Score (300-850)</label>
+              <input type="number" name="CreditScore" min="300" max="850" required>
+            </div>
+            <div class="form-group">
+              <label>Number of Credit Lines</label>
+              <input type="number" name="NumCreditLines" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Debt-to-Income Ratio</label>
+              <input type="number" step="0.01" name="DTIRatio" min="0" max="1" required>
+            </div>
+            <div class="form-group">
+              <label>Has Mortgage?</label>
+              <select name="HasMortgage" required>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <h3>Loan Details</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Loan Amount ($)</label>
+              <input type="number" name="LoanAmount" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Interest Rate (%)</label>
+              <input type="number" step="0.01" name="InterestRate" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Loan Term (months)</label>
+              <input type="number" name="LoanTerm" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Loan Purpose</label>
+              <select name="LoanPurpose" required>
+                <option value="">Select Purpose</option>
+                <option value="Personal">Personal</option>
+                <option value="Business">Business</option>
+                <option value="Education">Education</option>
+                <option value="Home">Home</option>
+                <option value="Car">Car</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Has Co-Signer?</label>
+              <select name="HasCoSigner" required>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <button type="button" id="prevBtn" class="btn btn-secondary" disabled>Previous</button>
+        <button type="button" id="nextBtn" class="btn">Next</button>
+      </div>
+    </form>
+
+    <section id="result" class="result hidden">
+      <h2>📊 Prediction Result</h2>
+      <div class="risk-meter">
+        <div class="meter-circle">
+          <span id="riskScore"></span>
+        </div>
+      </div>
+      <p><strong>Decision:</strong> <span id="decision"></span></p>
+      <button id="resetBtn" class="btn btn-secondary">Start Over</button>
+    </section>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Best Model: LogReg
+
+              precision    recall  f1-score   support
+
+           0     0.9446    0.6759    0.7880     45121
+           1     0.2207    0.6984    0.3354      5929
+
+    accuracy                         0.6786     51050
+   macro avg     0.5827    0.6872    0.5617     51050
+weighted avg     0.8605    0.6786    0.7354     51050
