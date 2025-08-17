@@ -1,7 +1,8 @@
-# 💡 AI-Powered Loan Eligibility & Risk Scoring  
+# AI-Powered Loan Eligibility & Risk Scoring System
 
-An interactive **FastAPI + Machine Learning + Modern Frontend** project that predicts **loan approval risk** using an AI model.  
-The system takes user financial and personal details, performs feature engineering, and predicts whether the applicant is **High Risk** or **Low Risk**.  
+This repository implements **Project A** from the AI Engineer – Round 2 Assignment: an end-to-end AI-powered system for predicting loan default risk. The system includes data preprocessing, feature engineering, model training, evaluation, and a FastAPI backend for serving predictions and model insights. It uses a machine learning model to compute a risk score (default probability) based on borrower features such as income, loan amount, and credit score.
+
+The system is built with Python, FastAPI, scikit-learn, and related libraries. It includes scripts for training/evaluation, a production-ready API, and visualizations for dataset insights and model performance.
 
 ![Personal Information](output_screenshots/output1.png)
 ![Employment Details](output_screenshots/output2.png)
@@ -9,156 +10,210 @@ The system takes user financial and personal details, performs feature engineeri
 ![Loan Details](output_screenshots/output4.png)
 ![Prediction](output_screenshots/output5.png)
 
+## 📌 Features
+- **Data Preprocessing & Cleaning**: Handles missing values, outliers, and data types from the provided Excel dataset.
+- **Feature Engineering**: Derives new features like income-to-loan ratios, age/DTI buckets, employment years, and high-interest flags to improve model accuracy.
+- **Model Training & Selection**: Trains multiple classifiers (Logistic Regression, Random Forest, and optionally XGBoost if installed), evaluates via cross-validation and holdout set, and selects the best based on ROC-AUC.
+- **Model Evaluation**: Computes metrics like accuracy, F1-score, ROC-AUC, and generates classification reports, ROC/PR curves, and feature importance plots.
+- **FastAPI Backend**: Exposes endpoints for risk prediction, model health checks, and performance insights with input validation and error handling.
+- **Visualizations**: Includes plots for feature distributions, correlations, class imbalance, risk segmentation, and model performance.
 
----
+## 🏗️ Tech Stack
+- **Backend**: FastAPI, Uvicorn
+- **ML Libraries**: scikit-learn, pandas, numpy, joblib (optional: xgboost for advanced modeling)
+- **Visualization**: Matplotlib
+- **Other**: Pydantic for validation, argparse for CLI
 
-## 📌 Features  
-
-✅ **FastAPI Backend** – Serves API endpoints for health check, predictions, and model info  
-✅ **Scikit-learn ML Model** – Pre-trained classification model for loan risk scoring  
-✅ **Feature Engineering** – Ratios, buckets, and engineered flags for accurate predictions  
-✅ **Modern Frontend** – Multi-step form with progress bar, gradient UI, and result visualization  
-✅ **Interactive Risk Meter** – Dynamic circular chart showing prediction probability  
-✅ **CORS Enabled** – Frontend-backend integration with proper CORS middleware  
-✅ **Logging** – Logs predictions and errors in the backend terminal  
-
----
-
-## 🏗️ Tech Stack  
-
-### 🔹 Backend  
-- [FastAPI](https://fastapi.tiangolo.com/) – API framework  
-- [scikit-learn](https://scikit-learn.org/) – ML model training & inference  
-- [pandas](https://pandas.pydata.org/) – Data processing  
-- [numpy](https://numpy.org/) – Numerical computations  
-- [joblib](https://joblib.readthedocs.io/) – Model persistence  
-
-### 🔹 Frontend  
-- **HTML5, CSS3, JavaScript**  
-- Multi-step loan application form with validation  
-- Gradient-based modern UI (Poppins font, animated progress bar)  
-- Risk score meter visualization  
-
----
-
-## 📂 Project Structure  
-
+## 📂 Project Structure
+```
 loan-risk-system/
-│
-├── app.py # FastAPI backend (main entry)
-├── artifacts/
-│ ├── model.pkl # Trained ML model
-│ └── metrics.json # Model performance metrics
-│
-├── frontend/
-│ ├── index.html # Frontend entry
-│ ├── style.css # Gradient & responsive UI
-│ └── script.js # Form logic & API calls
-│
-├── output_screenshot/ # Output screenshots
-│ ├── output1.jpeg
-│ ├── output2.jpeg
-│ ├── output3.jpeg
-│ └── output4.jpeg
-│
-├── requirements.txt # Python dependencies
-└── README.md # Documentation
+├── .git/                     # Git repository files
+├── __pycache__/              # Python cache
+├── artifacts/                # Model artifacts and outputs
+│   ├── model.pkl             # Serialized trained model
+│   ├── eval_metrics.json     # Evaluation metrics
+│   ├── eval_classification_report.txt  # Classification report
+│   ├── metrics.json          # Training metrics (CV and holdout)
+│   ├── classification_report.txt  # Best model classification report
+│   ├── feature_names.json    # List of feature names post-preprocessing
+│   └── plots/                # Generated visualizations (EDA and performance plots)
+├── data/                     # Dataset directory
+│   └── 6S_AI_TASK-Loan_default_Loan_default.xlsx  # Input dataset
+├── frontend/                 # Static frontend files
+│   ├── index.html            # Multi-step loan application form
+│   ├── style.css             # UI styling
+│   └── script.js             # Form logic and API integration
+├── output_screenshots/       # Screenshots of the application in action
+│   ├── output1.png           # Personal Information form
+│   ├── output2.png           # Employment Details form
+│   ├── output3.png           # Financial Information form
+│   ├── output4.png           # Loan Details form
+│   └── output5.png           # Prediction result with risk meter
+├── venv/                     # Virtual environment (not committed)
+├── .gitignore                # Git ignore file
+├── app.py                    # FastAPI backend (API endpoints)
+├── evaluate.py               # Evaluation script for model metrics
+├── README.md                 # This documentation
+├── requirements.txt          # Python dependencies
+└── train.py                  # Training script (preprocessing, FE, training, evaluation)
+```
 
----
+## ⚙️ Setup Instructions
+1. **Clone the Repository**:
+   ```
+   git clone https://github.com/your-username/loan-risk-system.git
+   cd loan-risk-system
+   ```
 
-## ⚙️ Setup & Installation  
+2. **Create and Activate Virtual Environment** (recommended):
+   ```
+   python -m venv venv
+   source venv/bin/activate  # On Linux/Mac
+   .\venv\Scripts\activate   # On Windows
+   ```
 
-### 1️⃣ Clone the repo  
-git clone https://github.com/S-Karthikeyan-17/loan-risk-system.git
-cd loan-risk-system
+3. **Install Dependencies**:
+   ```
+   pip install -r requirements.txt
+   ```
+   - Note: If you want to use XGBoost (optional for better performance), install it separately: `pip install xgboost`. The training script will detect and use it if available.
 
-2️⃣ Create & activate virtual environment
-python -m venv venv
-.\venv\Scripts\activate   # On Windows
-source venv/bin/activate # On Mac/Linux
+4. **Dataset**: Ensure the dataset (`data/6S_AI_TASK-Loan_default_Loan_default.xlsx`) is present. Download from [here](https://provided-link) if missing.
 
-3️⃣ Install dependencies
-pip install -r requirements.txt
+## 🚀 How to Run
+### Training the Model
+Run the training script to preprocess data, engineer features, train models, evaluate, and save artifacts:
+```
+python train.py --data-path data/6S_AI_TASK-Loan_default_Loan_default.xlsx --out-dir artifacts
+```
+- This generates `model.pkl`, metrics files, reports, and plots in `artifacts/`.
+- Optional: Use `--help` for CLI options.
 
-4️⃣ Run FastAPI server
-uvicorn app:app --reload
-Backend will be running at 👉 http://127.0.0.1:8000
+### Evaluating the Model
+Run evaluation on the full dataset using the trained model:
+```
+python evaluate.py --data-path data/6S_AI_TASK-Loan_default_Loan_default.xlsx --model-path artifacts/model.pkl --out-dir artifacts
+```
+- Outputs metrics like accuracy, F1, ROC-AUC, and saves `eval_metrics.json` and `eval_classification_report.txt`.
 
-5️⃣ Access frontend
-Open in browser:
-👉 http://127.0.0.1:8000/
+### Running the FastAPI Backend
+Start the API server:
+```
+uvicorn app:app --reload --port 8000
+```
+- Access the API at `http://127.0.0.1:8000`.
+- The frontend is served at `http://127.0.0.1:8000/` (open in browser for interactive form).
 
-🚀 API Endpoints
-Method	Endpoint	Description
-GET	/health	Check API health & model availability
-POST	/predict	Get loan risk prediction (JSON request body)
-GET	/model	Get model metrics (accuracy, precision, recall, etc.)
+### Retraining/Regenerating Artifacts
+- To retrain: Run `python train.py` with updated dataset or parameters (e.g., change `--test-size` in code if needed).
+- Artifacts are overwritten in `artifacts/`. Visualizations are regenerated in `artifacts/plots/`.
+- For custom configurations: Modify `TrainConfig` in `train.py` (e.g., random_state, n_splits for CV).
 
-Example Request
-POST /predict
-{
-  "Age": 30,
-  "Income": 100000,
-  "LoanAmount": 20000,
-  "CreditScore": 650,
-  "MonthsEmployed": 24,
-  "NumCreditLines": 5,
-  "InterestRate": 10,
-  "LoanTerm": 12,
-  "DTIRatio": 0.3,
-  "Education": "Bachelor's",
-  "EmploymentType": "Full-time",
-  "MaritalStatus": "Married",
-  "HasMortgage": "Yes",
-  "HasDependents": "No",
-  "LoanPurpose": "Business",
-  "HasCoSigner": "No"
-}
+## 🔗 API Usage
+The FastAPI backend provides the following endpoints. Use tools like Postman or curl for testing, or interact via the frontend form.
 
-Example Response
-{
-  "risk_score": 0.4855,
-  "decision": "Low Risk",
-  "threshold": 0.5
-}
+### 1. Health Check
+- **Method**: GET
+- **Endpoint**: `/health`
+- **Description**: Checks if the API and model are loaded.
+- **Response Example**:
+  ```json
+  {
+    "status": "ok",
+    "model_loaded": true
+  }
+  ```
 
-📊 Output Screenshots
-📌 Screenshots of the application are stored in the output_screenshot/ folder.
+### 2. Predict Risk Score
+- **Method**: POST
+- **Endpoint**: `/predict`
+- **Description**: Predicts loan default risk based on input features.
+- **Request Body** (JSON, validated via Pydantic):
+  ```json
+  {
+    "Age": 30,
+    "Income": 100000,
+    "LoanAmount": 20000,
+    "CreditScore": 650,
+    "MonthsEmployed": 24,
+    "NumCreditLines": 5,
+    "InterestRate": 10,
+    "LoanTerm": 12,
+    "DTIRatio": 0.3,
+    "Education": "Bachelor's",
+    "EmploymentType": "Full-time",
+    "MaritalStatus": "Married",
+    "HasMortgage": "Yes",
+    "HasDependents": "No",
+    "LoanPurpose": "Business",
+    "HasCoSigner": "No"
+  }
+  ```
+- **Response Example**:
+  ```json
+  {
+    "risk_score": 0.4855,
+    "decision": "Low Risk",
+    "threshold": 0.5
+  }
+  ```
+- **Error Handling**: Returns 400 Bad Request with details (e.g., invalid input values).
 
-Screenshot	Preview
-Step 1 – Personal Info Form	
-Step 2 – Employment Details	
-Step 3 – Financial Information	
-Step 4 – Prediction Result	
+### 3. Model Insights
+- **Method**: GET
+- **Endpoint**: `/model`
+- **Description**: Returns model performance metrics.
+- **Response Example**:
+  ```json
+  {
+    "status": "success",
+    "metrics": {
+      "accuracy": 0.85,
+      "f1": 0.78,
+      "roc_auc": 0.92
+    }
+  }
+  ```
 
-🧠 Model Details
-Trained using Scikit-learn classification algorithms
+## 📊 Dataset Insights
+The dataset (`6S_AI_TASK-Loan_default_Loan_default.xlsx`) contains ~255,347 rows with features like Age, Income, LoanAmount, CreditScore, etc., and a binary target `Default` (0: No Default, 1: Default).
 
-Input features: personal, employment, financial & loan details
+- **Key Trends**:
+  - Class Imbalance: ~88% non-defaults vs. ~12% defaults – addressed via stratified splitting.
+  - Feature Distributions: Age is normally distributed (~18-70), Income skewed right (many low-income applicants). LoanAmount and InterestRate show wide ranges.
+  - Correlations: High negative correlation between CreditScore and Default; positive between LoanAmount/InterestRate and Default.
+  - High-Impact Variables: CreditScore, Income_to_Loan_Ratio (engineered), DTIRatio, and NumCreditLines strongly influence risk.
 
-Feature engineering:
+- **Patterns**:
+  - Higher DTIRatio (>0.5) and InterestRate (>=15%) correlate with defaults.
+  - Younger applicants (<=25) and those with short employment (<2 years) have elevated risk.
 
-Income-to-Loan ratio
+For details, see the training script's EDA section or generated plots.
 
-Credit score per loan amount
+## 📈 Visualizations & Reports
+Visualizations are generated during training/evaluation and saved in `artifacts/plots/`:
+- `eda_class_balance.png`: Class imbalance bar chart.
+- `eda_dist_{feature}.png`: Histograms for numeric features (e.g., Age, Income).
+- `eda_correlation_heatmap.png`: Correlation heatmap of numeric features.
+- `perf_roc_curves.png`: ROC curves for all models.
+- `perf_pr_curves.png`: Precision-Recall curves.
+- `perf_risk_segmentation.png`: Risk score distribution by default class.
+- `perf_feature_importance.png`: Permutation feature importance for the best model.
 
-Loan amount per credit line
+Screenshots of the frontend/application are in `output_screenshots/` (see above for previews).
 
-Age buckets & DTI ratio buckets
+Reports:
+- `metrics.json`: CV and holdout metrics.
+- `classification_report.txt`: Precision, recall, F1 per class.
+- `eval_metrics.json`: Full-dataset evaluation metrics.
 
-Employment years & high interest flag
+## 🛠️ Future Enhancements
+- Integrate XGBoost/LightGBM by default.
+- Add SHAP/LIME for explainable predictions.
+- Deploy to cloud (e.g., Render/Heroku) with Docker.
+- Enhance frontend with real-time validation.
 
-🛠️ Future Enhancements
+## 👨‍💻 Author
+Karthikeyan S  
+GitHub: S-Karthikeyan-17  
 
-✅ Deploy to cloud (AWS/GCP/Render)
-
-✅ Add database support (PostgreSQL / MySQL)
-
-✅ Improve model with ensemble learning (XGBoost, LightGBM)
-
-✅ Add user authentication
-
-✅ Provide explainable AI (SHAP / LIME)
-
-👨‍💻 Author
-Karthikeyan S
