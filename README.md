@@ -1,6 +1,6 @@
 # AI-Powered Loan Eligibility & Risk Scoring System
 
-This repository implements **Project A** from the AI Engineer – Round 2 Assignment: an end-to-end AI-powered system for predicting loan default risk. The system includes data preprocessing, feature engineering, model training, evaluation, and a FastAPI backend for serving predictions and model insights. It uses a machine learning model to compute a risk score (default probability) based on borrower features such as income, loan amount, and credit score.
+An end-to-end AI-powered system for predicting loan default risk. The system includes data preprocessing, feature engineering, model training, evaluation, and a FastAPI backend for serving predictions and model insights. It uses a machine learning model to compute a risk score (default probability) based on borrower features such as income, loan amount, and credit score.
 
 The system is built with Python, FastAPI, scikit-learn, and related libraries. It includes scripts for training/evaluation, a production-ready API, and visualizations for dataset insights and model performance.
 
